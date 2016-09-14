@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Générer un graphique</title>
+  <title>hf5</title>
 
   <link rel="stylesheet" type="text/css" href="vendor/components/normalize.css/normalize.css">
   <link rel="stylesheet" type="text/css" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
@@ -15,7 +15,7 @@
 <body>
 
   <div class="container-fluid">
-    
+
     <div class="row">
 
       <form class="col-md-3 leftbox">
@@ -29,7 +29,7 @@
 
           <ul class="list-unstyled">
             <li>Axe x<textarea class="form-control textarea-points"  id="textarea" name="textarea">Collez ici l'intégralité de vos points expérimentaux concernant l'axe x.</textarea> </li>
-            
+
             <li>Axe y<textarea class="form-control textarea-points"  id="textarea" name="textarea">Collez ici l'intégralité de vos points expérimentaux concernant l'axe y.</textarea> </li>
           </ul>
 
@@ -48,29 +48,29 @@
             </li>
 
             <span class="default-curve">
-                
+
                 <li>
                   <button type="button" id="1" class="remove-button-default">
                   <span class="glyphicon glyphicon-trash"aria-hidden="true"></span>
-                  </button> 
+                  </button>
                   <input type="text" class="curve-title-input" value="Monomère">
                   σ <input type="number" min="0" step="0.1" class="curve-parameter-input sigmaChange" value="1">
                   tc <input type="number" min="0" step="0.1" class="curve-parameter-input tcChange" value="6.6">
                 </li>
 
-                <li> 
+                <li>
                   <button type="button" id="2" class="remove-button-default">
                   <span class="glyphicon glyphicon-trash"aria-hidden="true"></span>
-                  </button> 
+                  </button>
                   <input type="text" class="curve-title-input" value="Dimère">
                   σ <input type="number" min="0" step="0.1" class="curve-parameter-input sigmaChange" value="2">
                   tc <input type="number" min="0" step="0.1" class="curve-parameter-input tcChange" value="9.8">
                 </li>
 
-                <li> 
+                <li>
                   <button type="button" id="3" class="remove-button-default">
                   <span class="glyphicon glyphicon-trash"aria-hidden="true"></span>
-                  </button> 
+                  </button>
                   <input type="text" class="curve-title-input" value="Trimère">
                   σ <input type="number" min="0" step="0.1" class="curve-parameter-input sigmaChange" value="2">
                   tc <input type="number" min="0" step="0.1" class="curve-parameter-input tcChange" value="13.25">
@@ -79,13 +79,13 @@
 
             </span>
 
-            <span class="user-curve"> 
+            <span class="user-curve">
             </span>
 
             <li>
               <button type="button" data-toggle="modal" data-target=".add-curve-modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Rajouter une courbe</button>
-            </li>   
-          
+            </li>
+
             <li>
               <button type="button" class="add-default-curve"></button>
             </li>
@@ -96,8 +96,8 @@
                   <h5>Rajoutez une courbe</h5>
                   <hr />
                   <input class="curve-title-input-modal" type="text" id="curveName" placeholder="Nom de votre courbe"> <br />
-                  <input class="curve-parameter-input-modal" type="text" id="curveSigma" placeholder="Sigma"> 
-                  <input class="curve-parameter-input-modal" type="text" id="curveTc" placeholder="TC"> 
+                  <input class="curve-parameter-input-modal" type="text" id="curveSigma" placeholder="Sigma">
+                  <input class="curve-parameter-input-modal" type="text" id="curveTc" placeholder="TC">
                   <button id="add-curve-button" type="button" class="submit-button" data-dismiss="modal" aria-label="Close">Rajouter la courbe</button>
                   <br />
                 </div>
@@ -110,7 +110,7 @@
 
         </div>
 
-      </form> 
+      </form>
 
     <div class="col-md-9 graphicbox">
 
@@ -129,9 +129,9 @@
         <button type="button" class="submit-button">Télécharger les données des points <span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
 
           <p class="download-text">
-          <span class="label label-primary">0</span> points générés pour <span class="label label-primary">0</span> courbes 
+          <span class="label label-primary">0</span> points générés pour <span class="label label-primary">0</span> courbes
         </p>
-      
+
       </div>
 
     </div>
