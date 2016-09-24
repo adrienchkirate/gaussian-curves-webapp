@@ -14,9 +14,7 @@ $(".remove-button-default").click(function(){
 // Remove custom curve
 $(document).on('click', '.remove-button', function() {
 
-	$(this).parent().css("display","none");
-
-	$(".add-default-curve").html('<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Rétablir les courbes par défauts');
+	$(this).parent().css("display","none")
 
 	// Remove default series from the graph
     $('#container').highcharts().get(parseInt($(this).attr('id'))).remove();
