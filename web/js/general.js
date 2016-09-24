@@ -57,3 +57,11 @@ $(".curvesum-input").click(function(){
 	}
 
 });
+
+// Experimental points
+$(document).on('input', '.xValue', function() {
+
+
+    
+    redrawSum();
+});
