@@ -1,17 +1,6 @@
 // web/js/general.js
 
 // Remove curve
-$(".remove-button-default").click(function(){
-
-	$(this).parent().css("display","none");
-
-	// Remove default series from the graph
-  $('#container').highcharts().get(parseInt($(this).attr('id'))).remove();
-
-  redrawSum();
-});
-
-// Remove custom curve
 $(document).on('click', '.remove-button', function() {
 
 	$(this).parent().css("display","none")
