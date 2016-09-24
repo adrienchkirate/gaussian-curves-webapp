@@ -22,24 +22,6 @@ function gaussian(sigma, tc, x)
 	return  curve;
 }
 
-	while($('#container').highcharts().series.length > 0)
-	{
-	 $('#container').highcharts().series[0].remove();
-	}
-
-	console.log(seriesUser);
-	console.log(seriesUser.length);
-
-	if(seriesUser.length > 0)
-	{
-		for(var i = 0; i < seriesUser.length; i++)
-		{
-		    chart.addSeries({ id: seriesUser[i].id, name: seriesUser[i].name, data: seriesUser[i].data });
-		}
-	}
-
-}
-
 //
 function random(min, max)
 {
