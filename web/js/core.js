@@ -1,7 +1,7 @@
 // web/js/core.js
 
 
-//
+// default value for x
 var x = [];
 
 for (var i = 0; i < 288; i++)
@@ -9,7 +9,7 @@ for (var i = 0; i < 288; i++)
 	x[i] = i * 1/10;
 }
 
-//
+// gaussian function for the curve
 function gaussian(sigma, tc, x)
 {
 	var curve = [];
@@ -22,7 +22,7 @@ function gaussian(sigma, tc, x)
 	return  curve;
 }
 
-//
+// just a random function
 function random(min, max)
 {
   min = Math.ceil(min);
@@ -30,7 +30,7 @@ function random(min, max)
   return Math.floor(Math.random() * (max - min +1)) + min;
 }
 
-//
+// calculate the sum of all the curve
 function curveSum()
 {
 	var chart = $('#container').highcharts(), data = [];
@@ -55,7 +55,7 @@ function curveSum()
 }
 
 
-//
+// redraw the curve sum
 function redrawSum()
 {
 	$('#container').highcharts().get(4).setData([0]);
