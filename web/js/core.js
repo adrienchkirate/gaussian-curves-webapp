@@ -22,28 +22,6 @@ function gaussian(sigma, tc, x)
 	return  curve;
 }
 
-
-//
-function removeDefault()
-{
-	var seriesUser = [], chart = $('#container').highcharts();
-
-	for(var i = 0; i < chart.series.length; i++)
-	{
-		var seriesId = chart.series[i].options.id, seriesName = chart.series[i].options.name, seriesValue = [];
-
-		if(seriesId != 1 && seriesId != 2 && seriesId != 3)
-		{
-			for(var e = 0; e < chart.series[i].data.length; e++)
-			{
-	 			seriesValue[e] = chart.series[i].data[e].y;
-	 		}
-
-			seriesUser[i] = { 'id' : seriesId, 'name': seriesName, 'data': seriesValue };
-		}
-
-	}
-
 	while($('#container').highcharts().series.length > 0)
 	{
 	 $('#container').highcharts().series[0].remove();

@@ -5,30 +5,10 @@ $(".remove-button-default").click(function(){
 
 	$(this).parent().css("display","none");
 
-	$(".add-default-curve").html('<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Rétablir les courbes par défauts');
-
 	// Remove default series from the graph
-    $('#container').highcharts().get(parseInt($(this).attr('id'))).remove();
+  $('#container').highcharts().get(parseInt($(this).attr('id'))).remove();
 
-    redrawSum();
-});
-
-// Re-establish default curve
-$(".add-default-curve").click(function(){
-
-	$('.default-curve li').css("display","block");
-	$(this).empty();
-
-	// Remove all the default curve
-	removeDefault();
-
-	// Add default series on the graph
-    $('#container').highcharts().addSeries({id: 1, name: $('#1').parent().find('>.curve-title-input').val(), color: '#2ecc71', data: gaussian($('#1').parent().find('>.sigmaChange').val(), $('#1').parent().find('>.tcChange').val(), x)});
-    $('#container').highcharts().addSeries({id: 2, name: $('#2').parent().find('>.curve-title-input').val(), color: '#f1c40f', data: gaussian($('#2').parent().find('>.sigmaChange').val(), $('#2').parent().find('>.tcChange').val(), x)});
-    $('#container').highcharts().addSeries({id: 3, name: $('#3').parent().find('>.curve-title-input').val(), color: '#e67e22', data: gaussian($('#3').parent().find('>.sigmaChange').val(), $('#3').parent().find('>.tcChange').val(), x)});
-
-    redrawSum();
-
+  redrawSum();
 });
 
 // Remove custom curve
@@ -56,7 +36,7 @@ $("#add-curve-button").click(function(){
 	$("#curveSigma").val('');
 	$("#curveTc").val('');
 
-    redrawSum();		
+    redrawSum();
 });
 
 
@@ -73,9 +53,9 @@ $(document).on('input', '.tcChange', function() {
     $('#container').highcharts().get(parseInt($(this).parent().children(":first").attr('id'))).setData(gaussian($(this).parent().find('>.sigmaChange').val(), $(this).val(), x));
     redrawSum();
 });
-	
 
-// Show/Hide the curve sum 
+
+// Show/Hide the curve sum
 $(".curvesum-input").click(function(){
 
 	redrawSum();
@@ -90,13 +70,3 @@ $(".curvesum-input").click(function(){
 	}
 
 });
-
-
-
-
-
-
-
-
-
-
