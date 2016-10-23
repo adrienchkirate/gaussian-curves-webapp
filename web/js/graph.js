@@ -1,4 +1,4 @@
-// web/bundles/Unilim/javascript/graph.js
+// web/js/graph.js
 
 $(function () {
 
@@ -18,7 +18,7 @@ $(function () {
             categories: x,
             title:  {
                       text: 'Temps en (s)'
-                    }    
+                    }
           },
           yAxis: {
             title:  {
