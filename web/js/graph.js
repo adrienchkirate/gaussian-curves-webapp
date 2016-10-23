@@ -1,4 +1,4 @@
-// web/bundles/Unilim/javascript/graph.js
+// web/js/graph.js
 
 $(function () {
 
@@ -18,7 +18,7 @@ $(function () {
             categories: x,
             title:  {
                       text: 'Temps en (s)'
-                    }    
+                    }
           },
           yAxis: {
             title:  {
@@ -27,26 +27,26 @@ $(function () {
           },
           series: [
           {
-            id: 1,
-            name: 'Monomère',
+            id: curve[0].id,
+            name: curve[0].name,
             color: '#2ecc71',
-            data: gaussian(1, 6.6, x)
+            data: gaussian(curve[0].sigma, curve[0].tc, x)
           },
           {
-            id: 2,
-            name: 'Dimère',
+            id: curve[1].id,
+            name: curve[1].name,
             color: '#f1c40f',
-            data: gaussian(2, 9.8, x)
+            data: gaussian(curve[1].sigma, curve[1].tc, x)
           },
           {
-            id: 3,
-            name: 'Trimère',
+            id: curve[2].id,
+            name: curve[2].name,
             color: '#e67e22',
-            data: gaussian(2, 13.25, x)
+            data: gaussian(curve[2].sigma, curve[2].tc, x)
           },
           {
-            id: 4,
-            name: 'Somme courbe',
+            id: curve[3].id,
+            name: curve[3].name,
             data: [0],
             visible: false
           }]

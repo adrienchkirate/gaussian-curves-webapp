@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title></title>
+  <title>hf5</title>
 
   <link rel="stylesheet" type="text/css" href="vendor/components/normalize.css/normalize.css">
   <link rel="stylesheet" type="text/css" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
@@ -28,7 +28,7 @@
           <h5>Points expérimentaux</h5>
 
           <ul class="list-unstyled">
-            <li>Axe x<textarea class="form-control textarea-points"  id="textarea" name="textarea">Collez ici l'intégralité de vos points expérimentaux concernant l'axe x.</textarea> </li>
+            <li>Axe x<textarea class="form-control textarea-points xValue"  id="textarea" name="textarea">Collez ici l'intégralité de vos points expérimentaux concernant l'axe x.</textarea> </li>
 
             <li>Axe y<textarea class="form-control textarea-points"  id="textarea" name="textarea">Collez ici l'intégralité de vos points expérimentaux concernant l'axe y.</textarea> </li>
           </ul>
@@ -50,7 +50,7 @@
             <span class="default-curve">
 
                 <li>
-                  <button type="button" id="1" class="remove-button-default">
+                  <button type="button" id="1" class="remove-button">
                   <span class="glyphicon glyphicon-trash"aria-hidden="true"></span>
                   </button>
                   <input type="text" class="curve-title-input" value="Monomère">
@@ -59,7 +59,7 @@
                 </li>
 
                 <li>
-                  <button type="button" id="2" class="remove-button-default">
+                  <button type="button" id="2" class="remove-button">
                   <span class="glyphicon glyphicon-trash"aria-hidden="true"></span>
                   </button>
                   <input type="text" class="curve-title-input" value="Dimère">
@@ -68,7 +68,7 @@
                 </li>
 
                 <li>
-                  <button type="button" id="3" class="remove-button-default">
+                  <button type="button" id="3" class="remove-button">
                   <span class="glyphicon glyphicon-trash"aria-hidden="true"></span>
                   </button>
                   <input type="text" class="curve-title-input" value="Trimère">
@@ -84,10 +84,6 @@
 
             <li>
               <button type="button" data-toggle="modal" data-target=".add-curve-modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Rajouter une courbe</button>
-            </li>
-
-            <li>
-              <button type="button" class="add-default-curve"></button>
             </li>
 
             <div id="myModal" class="modal fade add-curve-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -146,7 +142,7 @@
   <script src="web/js/core.js"></script>
   <script src="web/js/general.js"></script>
   <script src="web/js/highcharts-theme.js"></script>
-  <script src="web/js/default-graph.js"></script>
+  <script src="web/js/graph.js"></script>
 
 </body>
 </html>

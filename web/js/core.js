@@ -1,15 +1,40 @@
 // web/js/core.js
 
+// curve array
+var curve = [
+{
+	id: 1,
+	name: 'Monomère',
+	sigma: 1,
+	tc: 6.6
+},
+{
+	id: 2,
+	name: 'Dimère',
+	sigma: 2,
+	tc: 9.8
+},
+{
+	id: 3,
+	name: 'Trimère',
+	sigma: 2,
+	tc: 13.25
+},
+{
+	id: 4,
+	name: 'Somme des courbes',
+	sigma: null,
+	tc: null
+}];
 
-//
+// default value for x
 var x = [];
-
 for (var i = 0; i < 288; i++)
 {
 	x[i] = i * 1/10;
 }
 
-//
+// gaussian function for the curve
 function gaussian(sigma, tc, x)
 {
 	var curve = [];
@@ -22,47 +47,7 @@ function gaussian(sigma, tc, x)
 	return  curve;
 }
 
-
-//
-function removeDefault()
-{
-	var seriesUser = [], chart = $('#container').highcharts();
-
-	for(var i = 0; i < chart.series.length; i++)
-	{
-		var seriesId = chart.series[i].options.id, seriesName = chart.series[i].options.name, seriesValue = [];
-
-		if(seriesId != 1 && seriesId != 2 && seriesId != 3)
-		{
-			for(var e = 0; e < chart.series[i].data.length; e++)
-			{
-	 			seriesValue[e] = chart.series[i].data[e].y;
-	 		}
-
-			seriesUser[i] = { 'id' : seriesId, 'name': seriesName, 'data': seriesValue };
-		}
-
-	}
-
-	while($('#container').highcharts().series.length > 0)
-	{
-	 $('#container').highcharts().series[0].remove();
-	}
-
-	console.log(seriesUser);
-	console.log(seriesUser.length);
-
-	if(seriesUser.length > 0)
-	{
-		for(var i = 0; i < seriesUser.length; i++)
-		{
-		    chart.addSeries({ id: seriesUser[i].id, name: seriesUser[i].name, data: seriesUser[i].data });
-		}
-	}
-
-}
-
-//
+// just a random function
 function random(min, max)
 {
   min = Math.ceil(min);
@@ -70,10 +55,12 @@ function random(min, max)
   return Math.floor(Math.random() * (max - min +1)) + min;
 }
 
-//
+// calculate the sum of all the curve
 function curveSum()
 {
 	var chart = $('#container').highcharts(), data = [];
+
+	chart.get(4).setData([0]);
 
 	for (var i = 0; i < chart.series[0].data.length; i++)
 	{
@@ -91,13 +78,5 @@ function curveSum()
  		}
 	}
 
-	return data;
-}
-
-
-//
-function redrawSum()
-{
-	$('#container').highcharts().get(4).setData([0]);
-	$('#container').highcharts().get(4).setData(curveSum());
+	chart.get(4).setData(data)
 }
