@@ -1,34 +1,9 @@
 // web/js/core.js
 
-// curve array
-var curve = [
-{
-	id: 1,
-	name: 'Monomère',
-	sigma: 1,
-	tc: 6.6
-},
-{
-	id: 2,
-	name: 'Dimère',
-	sigma: 2,
-	tc: 9.8
-},
-{
-	id: 3,
-	name: 'Trimère',
-	sigma: 2,
-	tc: 13.25
-},
-{
-	id: 4,
-	name: 'Somme des courbes',
-	sigma: null
-	tc: null
-}];
 
 // default value for x
 var x = [];
+
 for (var i = 0; i < 288; i++)
 {
 	x[i] = i * 1/10;
