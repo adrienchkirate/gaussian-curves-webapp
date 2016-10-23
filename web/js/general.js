@@ -70,12 +70,12 @@ $(document).on('input', '.xValue', function() {
 
 		chart.setCategories(xValue);
 
-		for (var i = 0; i < chart.series.length; i++)
-		{
-			if(chart.series[i].name != 'Somme courbe')
-			{
-			}
-		}
+		// for (var i = 0; i < chart.series.length; i++)
+		// {
+		// 	if(chart.series[i].name != 'Somme courbe')
+		// 	{
+		// 	}
+		// }
 
     redrawSum();
 });
