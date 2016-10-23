@@ -60,6 +60,8 @@ function curveSum()
 {
 	var chart = $('#container').highcharts(), data = [];
 
+	chart.get(4).setData([0]);
+
 	for (var i = 0; i < chart.series[0].data.length; i++)
 	{
 		data[i] = chart.series[0].data[i].y;
@@ -76,13 +78,5 @@ function curveSum()
  		}
 	}
 
-	return data;
-}
-
-
-// redraw the curve sum
-function redrawSum()
-{
-	$('#container').highcharts().get(4).setData([0]);
-	$('#container').highcharts().get(4).setData(curveSum());
+	chart.get(4).setData(data)
 }

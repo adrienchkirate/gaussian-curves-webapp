@@ -8,7 +8,7 @@ $(document).on('click', '.remove-button', function() {
 	// Remove default series from the graph
     $('#container').highcharts().get(parseInt($(this).attr('id'))).remove();
 
-    redrawSum();
+    curveSum();
 });
 
 // Add custom curve
@@ -23,29 +23,29 @@ $("#add-curve-button").click(function(){
 	$("#curveSigma").val('');
 	$("#curveTc").val('');
 
-    redrawSum();
+    curveSum();
 });
 
 
 // Change curve data
 $(document).on('input', '.curve-title-input', function() {
     $('#container').highcharts().get(parseInt($(this).parent().children(":first").attr('id'))).update({ name: $(this).val() });
-    redrawSum();
+    curveSum();
 });
 $(document).on('input', '.sigmaChange', function() {
     $('#container').highcharts().get(parseInt($(this).parent().children(":first").attr('id'))).setData(gaussian($(this).val(), $(this).parent().find('>.tcChange').val(), x));
-    redrawSum();
+    curveSum();
 });
 $(document).on('input', '.tcChange', function() {
     $('#container').highcharts().get(parseInt($(this).parent().children(":first").attr('id'))).setData(gaussian($(this).parent().find('>.sigmaChange').val(), $(this).val(), x));
-    redrawSum();
+    curveSum();
 });
 
 
 // Show/Hide the curve sum
 $(".curvesum-input").click(function(){
 
-	redrawSum();
+	curveSum();
 
 	if($(this).is(':checked'))
 	{
@@ -77,5 +77,5 @@ $(document).on('input', '.xValue', function() {
 		// 	}
 		// }
 
-    redrawSum();
+    curveSum();
 });
