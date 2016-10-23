@@ -61,14 +61,14 @@ $(".curvesum-input").click(function(){
 // Experimental points x axis
 $(document).on('input', '.xValue', function() {
 
-		var xValue = $(this).split(/[\n]+/), chart = $('#container').highcharts();
+		var xValue = $(this).val().split(/[\n]+/), chart = $('#container').highcharts();
 
 		for (var i = 0; i < xValue.length; i++)
 		{
 			xValue[i] = parseFloat(xValue[i]);
 		}
 
-		chart.setCategories(xValue);
+		chart.xAxis[0].setCategories(xValue);
 
 		// for (var i = 0; i < chart.series.length; i++)
 		// {
