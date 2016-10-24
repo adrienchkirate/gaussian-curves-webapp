@@ -55,6 +55,15 @@ function random(min, max)
   return Math.floor(Math.random() * (max - min +1)) + min;
 }
 
+// .last method who return the last element of an array
+if (!Array.prototype.last)
+{
+    Array.prototype.last = function()
+		{
+        return this[this.length - 1];
+    };
+};
+
 // calculate the sum of all the curve
 function curveSum()
 {
