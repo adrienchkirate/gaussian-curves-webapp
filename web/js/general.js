@@ -80,21 +80,26 @@ $(".curvesum-input").click(function(){
 // Experimental points x axis
 $(document).on('input', '.xValue', function() {
 
-		var xValue = $(this).val().split(/[\n]+/), chart = $('#container').highcharts();
+		var xUser = $(this).val().split(/[\n]+/), chart = $('#container').highcharts();
 
-		for (var i = 0; i < xValue.length; i++)
+		// string to number
+		for (var i = 0; i < xUser.length; i++)
 		{
-			xValue[i] = parseFloat(xValue[i]);
+			xUser[i] = parseFloat(xUser[i]);
 		}
 
-		chart.xAxis[0].setCategories(xValue);
+		// Assign xUser to the original x and change the xAxis
+		x = xUser;
+		chart.xAxis[0].setCategories(x);
 
-		// for (var i = 0; i < chart.series.length; i++)
-		// {
-		// 	if(chart.series[i].name != 'Somme courbe')
-		// 	{
-		// 	}
-		// }
+		// recalculate the data with the new x values
+		for (var i = 0; i < curve.length; i++)
+		{
+			if(curve[i].name != 'Somme courbe')
+			{
+				chart.get(curve[i].id).setData(gaussian(curve[i].sigma, curve[i].tc, x))
+			}
+		}
 
     curveSum();
 });
