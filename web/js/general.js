@@ -78,9 +78,9 @@ $(".curvesum-input").click(function(){
 });
 
 // Experimental points x axis
-$(document).on('input', '.xValue', function() {
+$(document).on('input', '.xUser', function() {
 
-		var xUser = $(this).val().split(/[\n]+/), chart = $('#container').highcharts();
+		var xUser = $(this).val().split(/[\n]+|,|;/), chart = $('#container').highcharts();
 
 		// string to number
 		for (var i = 0; i < xUser.length; i++)
