@@ -1,8 +1,8 @@
 # HF5
 
-## Limoges University project 2.0
+## Limoges University xlim project rebuild
 
-visit the 1.0 : http://hf5-adrienchkirate.xlim.fr/index.php
+visit the old version : http://hf5-adrienchkirate.xlim.fr/index.php
 
 ## Init project
 
