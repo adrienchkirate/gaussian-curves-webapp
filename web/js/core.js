@@ -27,6 +27,20 @@ var curve = [
 	tc: null
 }];
 
+// gaussian function for the curve
+function getIndex(id)
+{
+	for (var i = 0; i < curve.length; i++)
+	{
+		if(curve[i].id == id)
+		{
+			index = i;
+		}
+	}
+
+	return index;
+}
+
 // default value for x
 var x = [];
 for (var i = 0; i < 288; i++)
