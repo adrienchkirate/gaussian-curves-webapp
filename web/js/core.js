@@ -27,7 +27,7 @@ var curve = [
 	tc: null
 }];
 
-// gaussian function for the curve
+// function who work on curve array
 function getIndex(id)
 {
 	for (var i = 0; i < curve.length; i++)
@@ -39,6 +39,33 @@ function getIndex(id)
 	}
 
 	return index;
+}
+
+function existInCurve(name)
+{
+	var exist = false;
+
+	for (var i = 0; i < curve.length; i++)
+	{
+		if(curve[i].name == name)
+		{
+			exist = true
+		}
+	}
+
+	return exist;
+}
+
+function deleteInCurve(name)
+{
+	for (var i = 0; i < curve.length; i++)
+	{
+		if(curve[i].name == name)
+		{
+			$('#container').highcharts().get(curve[i].id).remove();
+			curve.splice(i, 1);
+		}
+	}
 }
 
 // default value for x
