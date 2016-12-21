@@ -3,10 +3,15 @@
 // Remove curve
 $(document).on('click', '.remove-button', function() {
 
-	$(this).parent().css("display","none")
+	var id = parseInt($(this).attr('id'));
 
-	// Remove default series from the graph
-  $('#container').highcharts().get(parseInt($(this).attr('id'))).remove();
+	$(this).parent().css("display","none");
+
+	// Remove series from the graph
+  $('#container').highcharts().get(id).remove();
+
+	// Remove curve from the curve array
+	curve.splice(getIndex(id), 1);
 
   curveSum();
 });
@@ -22,7 +27,7 @@ $("#add-curve-button").click(function(){
 		tc: $("#curveTc").val()
 	});
 
-	$(".user-curve").append('<li> <button type="button" index="'+ curve.indexOf(curve.last()) +'" id="'+ id +'" class="remove-button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> <input type="text" class="curve-title-input" value="'+ $("#curveName").val() +'"> σ <input type="number" min="0" step="0.1" class="curve-parameter-input sigmaChange"  value="'+ $("#curveSigma").val() +'"> tc <input type="number" min="0" step="0.1" class="curve-parameter-input tcChange" value="'+ $("#curveTc").val() +'"> </li>');
+	$(".user-curve").append('<li> <button type="button" id="'+ id +'" class="remove-button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> <input type="text" class="curve-title-input" value="'+ $("#curveName").val() +'"> σ <input type="number" min="0" step="0.1" class="curve-parameter-input sigmaChange"  value="'+ $("#curveSigma").val() +'"> tc <input type="number" min="0" step="0.1" class="curve-parameter-input tcChange" value="'+ $("#curveTc").val() +'"> </li>');
 
   $('#container').highcharts().addSeries({ id: curve.last().id, name: curve.last().name, data: gaussian(curve.last().sigma, curve.last().tc, x) });
 
@@ -36,26 +41,29 @@ $("#add-curve-button").click(function(){
 
 // Change curve data dynamically
 $(document).on('input', '.curve-title-input', function() {
-		var index = parseInt($(this).parent().children(":first").attr('index')), id = curve[index].id;
+		var id = parseInt($(this).parent().children(":first").attr('id'));
 
     $('#container').highcharts().get(id).update({ name: $(this).val() });
-		curve[index].name = $(this).val();
+
+		curve[getIndex(id)].name = $(this).val();
 
     curveSum();
 });
 $(document).on('input', '.sigmaChange', function() {
-		var index = parseInt($(this).parent().children(":first").attr('index')), id = curve[index].id;
+		var id = parseInt($(this).parent().children(":first").attr('id'));
 
-    $('#container').highcharts().get(id).setData(gaussian($(this).val(), curve[index].tc, x));
-		curve[index].sigma = $(this).val();
+    $('#container').highcharts().get(id).setData(gaussian($(this).val(), curve[getIndex(id)].tc, x));
+
+		curve[getIndex(id)].sigma = $(this).val();
 
     curveSum();
 });
 $(document).on('input', '.tcChange', function() {
-		var index = parseInt($(this).parent().children(":first").attr('index')), id = curve[index].id;
+		var id = parseInt($(this).parent().children(":first").attr('id'));
 
-    $('#container').highcharts().get(id).setData(gaussian(curve[index].sigma, $(this).val(), x));
-		curve[index].tc = $(this).val();
+    $('#container').highcharts().get(id).setData(gaussian(curve[getIndex(id)].sigma, $(this).val(), x));
+
+		curve[getIndex(id)].tc = $(this).val();
 
     curveSum();
 });
@@ -97,7 +105,7 @@ $(document).on('input', '.xUser', function() {
 		{
 			if(curve[i].name != 'Somme courbe')
 			{
-				chart.get(curve[i].id).setData(gaussian(curve[i].sigma, curve[i].tc, x))
+				chart.get(curve[i].id).setData(gaussian(curve[i].sigma, curve[i].tc, x));
 			}
 		}
 
