@@ -111,3 +111,31 @@ $(document).on('input', '.xUser', function() {
 
     curveSum();
 });
+
+// Experimental points y axis
+$(document).on('input', '.yUser', function() {
+
+		var yUser = $(this).val().split(/[\n]+|,|;/), chart = $('#container').highcharts(), id = random(5,99999999999);
+
+		// string to number
+		for (var i = 0; i < yUser.length; i++)
+		{
+			yUser[i] = parseFloat(yUser[i]);
+		}
+
+		if(existInCurve('Courbe expérimentale'))
+		{
+			deleteInCurve('Courbe expérimentale');
+		}
+
+		curve.push({
+			id: id,
+			name: 'Courbe expérimentale',
+			sigma: '',
+			tc: ''
+		});
+
+		chart.addSeries({ id: curve.last().id, name: curve.last().name, color: '#29B6F6', data: yUser });
+
+    curveSum();
+});
