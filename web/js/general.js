@@ -18,7 +18,7 @@ $(document).on('click', '.remove-button', function() {
 
 // Add custom curve
 $("#add-curve-button").click(function(){
-	var id = random(5, 99999999999);
+	var id = random();
 
 	curve.push({
 		id: id,
@@ -115,7 +115,7 @@ $(document).on('input', '.xUser', function() {
 // Experimental points y axis
 $(document).on('input', '.yUser', function() {
 
-		var yUser = $(this).val().split(/[\n]+|,|;/), chart = $('#container').highcharts(), id = random(5,99999999999);
+		var yUser = $(this).val().split(/[\n]+|,|;/), chart = $('#container').highcharts(), id = random();
 
 		// string to number
 		for (var i = 0; i < yUser.length; i++)
@@ -129,7 +129,7 @@ $(document).on('input', '.yUser', function() {
 		}
 
 		curve.push({
-			id: id,
+			id: 5,
 			name: 'Courbe expérimentale',
 			sigma: '',
 			tc: ''
