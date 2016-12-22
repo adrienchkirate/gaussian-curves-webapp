@@ -89,10 +89,10 @@ function gaussian(sigma, tc, x)
 }
 
 // just a random function
-function random(min, max)
+function random()
 {
-  min = Math.ceil(min);
-  max = Math.floor(max);
+  min = Math.ceil(6);
+  max = Math.floor(100);
   return Math.floor(Math.random() * (max - min +1)) + min;
 }
 
