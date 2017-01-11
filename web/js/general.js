@@ -13,7 +13,7 @@ $(document).on('click', '.remove-button', function() {
 	// Remove curve from the curve array
 	curve.splice(getIndex(id), 1);
 
-  curveSum();
+  refreshData();
 });
 
 // Add custom curve
@@ -35,7 +35,7 @@ $("#add-curve-button").click(function(){
 	$("#curveSigma").val('');
 	$("#curveTc").val('');
 
-  curveSum();
+  refreshData();
 });
 
 
@@ -47,7 +47,7 @@ $(document).on('input', '.curve-title-input', function() {
 
 		curve[getIndex(id)].name = $(this).val();
 
-    curveSum();
+    refreshData();
 });
 $(document).on('input', '.sigmaChange', function() {
 		var id = parseInt($(this).parent().children(":first").attr('id'));
@@ -56,7 +56,7 @@ $(document).on('input', '.sigmaChange', function() {
 
 		curve[getIndex(id)].sigma = $(this).val();
 
-    curveSum();
+    refreshData();
 });
 $(document).on('input', '.tcChange', function() {
 		var id = parseInt($(this).parent().children(":first").attr('id'));
@@ -65,14 +65,17 @@ $(document).on('input', '.tcChange', function() {
 
 		curve[getIndex(id)].tc = $(this).val();
 
-    curveSum();
+    refreshData();
 });
 
 
 // Show/Hide the curve sum
 $(".curvesum-input").click(function(){
 
-	curveSum();
+	if(existInCurve('Courbe expérimentale') == false)
+	{
+		refreshData();
+	}
 
 	if($(this).is(':checked'))
 	{
@@ -109,7 +112,7 @@ $(document).on('input', '.xUser', function() {
 			}
 		}
 
-    curveSum();
+    refreshData();
 });
 
 // Experimental points y axis
@@ -137,5 +140,5 @@ $(document).on('input', '.yUser', function() {
 
 		chart.addSeries({ id: curve.last().id, name: curve.last().name, color: '#29B6F6', data: yUser });
 
-    curveSum();
+    refreshData();
 });
