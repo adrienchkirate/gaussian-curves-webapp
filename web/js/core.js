@@ -105,13 +105,12 @@ if (!Array.prototype.last)
     };
 };
 
-function refreshData()
+// calculate the sum of all the curve
+function curveSum()
 {
+	var chart = $('#container').highcharts(), data = [];
 
-	var chart = $('#container').highcharts(), data = [], data2 = [];
-
-	// calculate the sum of all the curve
-	chart.get(4).setData(0);
+	chart.get(4).setData([0]);
 
 	for (var i = 0; i < chart.series[0].data.length; i++)
 	{
@@ -120,7 +119,7 @@ function refreshData()
 
 	for (var i = 1; i < chart.series.length; i++)
 	{
-		if(chart.series[i].name != 'Somme courbe' && chart.series[i].name != 'Courbe expérimentale')
+		if(chart.series[i].name != 'Somme courbe')
 		{
 			for (var e = 0; e < chart.series[i].data.length; e++)
 			{
@@ -129,28 +128,5 @@ function refreshData()
  		}
 	}
 
-	chart.get(4).setData(data);
-
-	// average function
-	Math.average = function() {
-		var cnt, tot, i;
-		cnt = arguments.length;
-		tot = i = 0;
-		while (i < cnt) tot+= arguments[i++];
-		return tot / cnt;
-	}
-
-	if(existInCurve('Courbe expérimentale'))
-	{
-		// calculate the error experimental/theoric
-		for (var i = 0; i < chart.get(5).data.length; i++)
-		{
-			data2[i] = Math.abs(chart.get(5).data[i].y - chart.get(4).data[i].y);
-		}
-
-		$('.maxError').empty();
-		$('.maxError').text(Math.max(... data2).toFixed(3));
-		$('.avgError').empty();
-		$('.avgError').text(Math.average(... data2).toFixed(3));
-	}
+	chart.get(4).setData(data)
 }
