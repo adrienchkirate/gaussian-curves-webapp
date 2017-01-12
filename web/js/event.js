@@ -1,4 +1,4 @@
-// web/js/general.js
+// web/js/event.js
 
 // Remove curve
 $(document).on('click', '.remove-button', function() {
