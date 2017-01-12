@@ -121,8 +121,8 @@ button
 }
 .submit-button
 {
-	display: block; 
-	margin-left: auto; 
+	display: block;
+	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px;
 	cursor: pointer;
@@ -160,8 +160,10 @@ button
 }
 .curvesum
 {
-	text-align: center;
+	text-align: left;
+  padding-left: 15px;
 	margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .curve-title-input
@@ -189,7 +191,7 @@ button
   background-color: #34495e;
   color: #1abc9c;
   border-radius: 3px;
-  text-align: center; 
+  text-align: center;
 }
 .curve-title-input-modal
 {
@@ -219,7 +221,7 @@ button
   webkit-font-smoothing: subpixel-antialiased;
   background-color: #34495e;
   color: #1abc9c;
-  border-left: 1px #71797a solid; 
+  border-left: 1px #71797a solid;
 }
 
 /* Stats Box */
@@ -229,7 +231,7 @@ button
   font-size: 1.1em;
   padding: 10px;
   width: 100%;
-  border-top: 1px #71797a solid; 
+  border-top: 1px #71797a solid;
 }
 .statsbox p
 {
@@ -245,4 +247,3 @@ button
 {
   text-align: center;
 }
-
