@@ -3,7 +3,6 @@
     "components/normalize.css": "~3.0",
     "components/jquery": "~3.0",
     "twbs/bootstrap": "~3.0",
-    "components/mathjs": "~3.0",
     "kwizer15/highcharts": "~4.0"
   }
 }
