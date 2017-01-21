@@ -105,6 +105,8 @@ if (!Array.prototype.last)
     };
 };
 
+
+// Refresh curveSum & the error experimental/theoric
 function refreshData()
 {
 
@@ -120,7 +122,7 @@ function refreshData()
 
 	for (var i = 1; i < chart.series.length; i++)
 	{
-		if(chart.series[i].name != 'Somme courbe' && chart.series[i].name != 'Courbe expérimentale')
+		if(chart.series[i].id != curve[3].id && chart.series[i].name != 'Courbe expérimentale')
 		{
 			for (var e = 0; e < chart.series[i].data.length; e++)
 			{
@@ -153,4 +155,51 @@ function refreshData()
 		$('.avgError').empty();
 		$('.avgError').text(Math.average(... data2).toFixed(3));
 	}
+}
+
+// Calulate the coefficient who help theoric curve to fit the experimental one
+function calculCoeff()
+{
+	var chart = $('#container').highcharts(), A = [], B = [], Y = [];
+
+	// Create an array of array with the data of the curve
+	for (var i = 0; i < chart.series.length; i++)
+	{
+		if(chart.series[i].name != curve[3].name && chart.series[i].name != 'Courbe expérimentale')
+		{
+			for(var e = 0; e < chart.series[i].data.length; e++)
+			{
+					B[e] = chart.series[i].data[e].y;
+			}
+
+			A.push(B);
+			B = [];
+		}
+		else if(chart.series[i].name == 'Courbe expérimentale')
+		{
+			for(var e = 0; e < chart.series[i].data.length; e++)
+			{
+					Y[e] = chart.series[i].data[e].y;
+			}
+		}
+	}
+
+	// Various matrix operations
+	var A = math.matrix(A);
+	var At = math.transpose(A);
+	var AtA = math.multiply(A,At);
+
+	// operations on the experimental points
+	var Y = math.matrix(Y);
+	var Yt = math.transpose(Y);
+
+	// Finals operations
+	var AtY = math.multiply(A,Yt);
+	var AtYt = math.transpose(AtY);
+
+	// The algorithmn return an array with one coefficient for each curve who help theoric point to fit the experimental ones
+	var coeff = math.divide(AtYt,AtA);
+
+	return coeff
+
 }
