@@ -76,13 +76,13 @@ for (var i = 0; i < 288; i++)
 }
 
 // gaussian function for the curve
-function gaussian(sigma, tc, x)
+function gaussian(sigma, tc, x, coeff)
 {
 	var curve = [];
 
 	for (var i = 0; i < x.length; i++)
 	{
- 		curve[i] = 1 / (sigma * Math.sqrt(2 * Math.PI)) * Math.exp(- Math.pow((x[i] - tc), 2) / 2 * Math.pow(sigma, 2));
+ 		curve[i] = coeff * (1 / (sigma * Math.sqrt(2 * Math.PI)) * Math.exp(- Math.pow((x[i] - tc), 2) / 2 * Math.pow(sigma, 2)));
 	}
 
 	return  curve;
@@ -160,7 +160,7 @@ function refreshData()
 // Calulate the coefficient who help theoric curve to fit the experimental one
 function calculCoeff()
 {
-	var chart = $('#container').highcharts(), A = [], B = [], Y = [];
+	var chart = $('#container').highcharts(), A = [], B = [], Y = [], coeffObject = [];
 
 	// Create an array of array with the data of the curve
 	for (var i = 0; i < chart.series.length; i++)
@@ -172,6 +172,7 @@ function calculCoeff()
 					B[e] = chart.series[i].data[e].y;
 			}
 
+			coeffObject.push({ name: chart.series[i].name, coeff: '' });
 			A.push(B);
 			B = [];
 		}
@@ -200,6 +201,11 @@ function calculCoeff()
 	// The algorithmn return an array with one coefficient for each curve who help theoric point to fit the experimental ones
 	var coeff = math.divide(AtYt,AtA);
 
-	return coeff
+	for (var i = 0; i < coeffObject.length; i++)
+	{
+		coeffObject[i] = { name: coeffObject[i].name, coeff: coeff.valueOf()[i] };
+	}
+
+	return coeffObject
 
 }
