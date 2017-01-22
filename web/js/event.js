@@ -29,7 +29,25 @@ $("#add-curve-button").click(function(){
 
 	$(".user-curve").append('<li> <button type="button" id="'+ id +'" class="remove-button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> <input type="text" class="curve-title-input" value="'+ $("#curveName").val() +'"> σ <input type="number" min="0" step="0.1" class="curve-parameter-input sigmaChange"  value="'+ $("#curveSigma").val() +'"> tc <input type="number" min="0" step="0.1" class="curve-parameter-input tcChange" value="'+ $("#curveTc").val() +'"> </li>');
 
-  $('#container').highcharts().addSeries({ id: curve.last().id, name: curve.last().name, data: gaussian(curve.last().sigma, curve.last().tc, x) });
+	if($('.algoCoeff-input').prop('checked') == true)
+	{
+		$('#container').highcharts().addSeries({ id: curve.last().id, name: curve.last().name, data: gaussian(curve.last().sigma, curve.last().tc, x, 1) });
+		var coeffObject = calculCoeff();
+		$('#container').highcharts().get(curve.last().id).remove();
+
+		for (var i = 0; i < coeffObject.length; i++)
+		{
+			if(coeffObject[i].name == curve.last().name)
+			{
+				$('#container').highcharts().addSeries({ id: curve.last().id, name: curve.last().name, data: gaussian(curve.last().sigma, curve.last().tc, x, coeffObject[i].coeff) });
+			}
+		}
+	}
+	else if($('.algoCoeff-input').prop('checked') == false)
+	{
+		console.log('hello');
+		$('#container').highcharts().addSeries({ id: curve.last().id, name: curve.last().name, data: gaussian(curve.last().sigma, curve.last().tc, x, 1) });
+	}
 
 	$("#curveName").val('');
 	$("#curveSigma").val('');
@@ -52,7 +70,24 @@ $(document).on('input', '.curve-title-input', function() {
 $(document).on('input', '.sigmaChange', function() {
 		var id = parseInt($(this).parent().children(":first").attr('id'));
 
-    $('#container').highcharts().get(id).setData(gaussian($(this).val(), curve[getIndex(id)].tc, x));
+		if($('.algoCoeff-input').prop('checked') == true)
+		{
+			$('#container').highcharts().get(id).setData(gaussian($(this).val(), curve[getIndex(id)].tc, x, 1));
+			var coeffObject = calculCoeff();
+
+			for (var i = 0; i < coeffObject.length; i++)
+			{
+				if(coeffObject[i].name == curve[getIndex(id)].name)
+				{
+					$('#container').highcharts().get(id).setData(gaussian($(this).val(), curve[getIndex(id)].tc, x, coeffObject[i].coeff));
+
+				}
+			}
+		}
+		else if($('.algoCoeff-input').prop('checked') == false)
+		{
+			$('#container').highcharts().get(id).setData(gaussian($(this).val(), curve[getIndex(id)].tc, x, 1));
+		}
 
 		curve[getIndex(id)].sigma = $(this).val();
 
@@ -61,7 +96,23 @@ $(document).on('input', '.sigmaChange', function() {
 $(document).on('input', '.tcChange', function() {
 		var id = parseInt($(this).parent().children(":first").attr('id'));
 
-    $('#container').highcharts().get(id).setData(gaussian(curve[getIndex(id)].sigma, $(this).val(), x));
+		if($('.algoCoeff-input').prop('checked') == true)
+		{
+			$('#container').highcharts().get(id).setData(gaussian(curve[getIndex(id)].sigma, $(this).val(), x, 1));
+			var coeffObject = calculCoeff();
+
+			for (var i = 0; i < coeffObject.length; i++)
+			{
+				if(coeffObject[i].name == curve[getIndex(id)].name)
+				{
+					$('#container').highcharts().get(id).setData(gaussian(curve[getIndex(id)].sigma, $(this).val(), x, coeffObject[i].coeff));
+				}
+			}
+		}
+		else if($('.algoCoeff-input').prop('checked') == false)
+		{
+			$('#container').highcharts().get(id).setData(gaussian(curve[getIndex(id)].sigma, $(this).val(), x, 1));
+		}
 
 		curve[getIndex(id)].tc = $(this).val();
 
@@ -108,7 +159,7 @@ $(document).on('input', '.xUser', function() {
 		{
 			if(curve[i].name != 'Somme courbe')
 			{
-				chart.get(curve[i].id).setData(gaussian(curve[i].sigma, curve[i].tc, x));
+				chart.get(curve[i].id).setData(gaussian(curve[i].sigma, curve[i].tc, x, 1));
 			}
 		}
 
@@ -140,5 +191,39 @@ $(document).on('input', '.yUser', function() {
 
 		chart.addSeries({ id: curve.last().id, name: curve.last().name, color: '#29B6F6', data: yUser });
 
+		$('.coeffCheck').css('display', 'block');
+
     refreshData();
+});
+
+// Add/Remove coefficient on curve
+$('.algoCoeff-input').click(function(){
+
+	var i = 0, chart = $('#container').highcharts(), coeffObject = calculCoeff();
+
+	if($('.algoCoeff-input').prop('checked') == true)
+	{
+		for (var i = 0; i < coeffObject.length; i++)
+		{
+			for (var e = 0; e < curve.length; e++)
+			{
+				if(coeffObject[i].name == curve[e].name)
+				{
+					chart.get(curve[e].id).setData(gaussian(curve[e].sigma, curve[e].tc, x, coeffObject[i].coeff));
+				}
+			}
+		}
+	}
+	else if($('.algoCoeff-input').prop('checked') == false)
+	{
+		for (var i = 0; i < curve.length; i++)
+		{
+			if(curve[i].id != 4 && curve[i].name != 'Courbe expérimentale')
+			{
+				chart.get(curve[i].id).setData(gaussian(curve[i].sigma, curve[i].tc, x, 1));
+			}
+		}
+	}
+
+	refreshData();
 });
