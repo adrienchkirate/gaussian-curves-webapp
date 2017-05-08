@@ -155,6 +155,22 @@ function refreshData()
 		$('.avgError').empty();
 		$('.avgError').text(Math.average(... data2).toFixed(3));
 	}
+
+	function calculStats()
+	{
+		var chart = $('#container').highcharts(), totalStats = [0, 0];
+
+		for (var i = 0; i < chart.series.length; i++)
+		{
+			totalStats[0] += chart.series[i].data.length;
+			totalStats[1] = chart.series.length;
+		}
+
+		return totalStats;
+	}
+
+	$('.totalPoint').text(calculStats()[0]);
+	$('.totalCurve').text(calculStats()[1]);
 }
 
 // Calulate the coefficient who help theoric curve to fit the experimental one
@@ -209,3 +225,4 @@ function calculCoeff()
 	return coeffObject
 
 }
+
