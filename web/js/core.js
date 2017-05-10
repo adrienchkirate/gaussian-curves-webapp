@@ -226,3 +226,50 @@ function calculCoeff()
 
 }
 
+// Function to format curve data in csv 
+function formatData()
+{
+	var data = '', chart = $('#container').highcharts(), test = [''];
+
+	for (var i = 0; i < chart.series.length; i++)
+	{
+		if(chart.series[i].name != 'Somme des courbes')
+		{
+			data += chart.series[i].name + ','; 
+		}
+	}
+
+	for(var i = 0; i < chart.series[1].data.length; i++)
+	{
+		data += '\n';
+
+		for(var e = 0; e < chart.series.length; e++)
+		{	
+			if(chart.series[e].name != 'Somme des courbes')
+			{
+				data += chart.series[e].data[i].y + ','; 
+			}
+	
+		}
+
+	}
+	
+	return data;
+}
+
+// Function to export data as a csv file 
+function exportToCsv(data) 
+{
+  		
+	var csvContent = "data:text/csv;charset=utf-8," + data;
+
+	var encodedUri = encodeURI(csvContent);
+	var link = document.createElement("a");
+	link.setAttribute("href", encodedUri);
+	link.setAttribute("download", "curve_data.csv");
+	document.body.appendChild(link);
+	link.click(); 
+   	document.body.removeChild(link); 
+      
+}
+

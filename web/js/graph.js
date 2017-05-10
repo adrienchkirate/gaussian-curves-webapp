@@ -47,7 +47,7 @@ $(function () {
           {
             id: curve[3].id,
             name: curve[3].name,
-            data: [2, 1, 0.5],
+            data: [0],
             visible: false
           }]
       });

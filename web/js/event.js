@@ -227,3 +227,9 @@ $('.algoCoeff-input').click(function(){
 
 	refreshData();
 });
+
+// Download all the data
+$(".downloadPoint").click(function() {
+    
+   exportToCsv(formatData());
+});
