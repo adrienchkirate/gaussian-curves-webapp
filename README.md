@@ -1,6 +1,7 @@
 # A Web Application for scientific purpose 
 
-This application was built to improve work on gaussian curves for a particular search subject. However the application is flexible enough to work with gaussian curves for various purposes. The application is in french. 
+This application was built to improve work on gaussian curves for a particular search subject. However the application is flexible enough to work with gaussian curves for various purposes. The application is in french.
+The online app includes an exemple experimental curve if you want to test the app. 
 
 It features :
 - Integration of your experimental curves
@@ -12,7 +13,7 @@ It features :
 
 ![Capture of the app](http://hf5-adrienchkirate.xlim.fr/img/capture.png)
 
-**[Use the application. ](http://adrienchkirate.com/website/hf5v1/)**
+**[Use the application. ](http://hf5-adrienchkirate.xlim.fr/)**
 
 ## Older Version
 
