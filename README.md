@@ -1,7 +1,7 @@
 # A Web Application for scientific purpose 
 
-This application was built to improve work on gaussian curves for a particular search subject at the [Limoges University](http://www.xlim.fr/) in France. However the application is flexible enough to work with gaussian curves for various purposes. The application is in french.
-The online app includes an exemple experimental curve if you want to test the app. 
+This application was built to improve work on Gaussian curves for a particular research subject at the [Limoges University](http://www.xlim.fr/) in France. However the application is flexible enough to work with gaussian curves for various purposes.The application is in French. 
+The online app includes a sample experimental curve if you want to test the app.
 
 It features :
 - Integration of your experimental curves
