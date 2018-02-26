@@ -11,14 +11,14 @@ It features :
 - Calculation of the error between experimental and theorical curve 
 - Calculation of a coefficient to reduce the error
 
-![Capture of the app](http://adrienchkirate.com/website/hf5v2/img/capture.png)
+![Capture of the app](http://adrienchkirate.com/app/hf5v2/img/capture.png)
 
-**[Use the application. ](http://adrienchkirate.com/website/hf5v2/)**
+**[Use the application. ](http://adrienchkirate.com/app/hf5v2/)**
 
 ## Older Version
 
 This github project is a rebuild of the first version of the application.
-You can visit the out of use version [here](http://adrienchkirate.com/website/hf5v1/). 
+You can visit the out of use version [here](http://adrienchkirate.com/app/hf5v1/). 
 
 ## Init project
 
