@@ -15,11 +15,6 @@ It features :
 
 **[Use the application. ](http://adrienchkirate.com/app/hf5v2/)**
 
-## Older Version
-
-This github project is a rebuild of the first version of the application.
-You can visit the out of use version [here](http://adrienchkirate.com/app/hf5v1/). 
-
 ## Init project
 
 If you want to run the app locally you will need the following dependencies :
@@ -33,5 +28,3 @@ Composer can download automatically all the dependencies by using the composer.j
 ```bash
   php ../composer.phar update
 ```
-
-You can see more of my projects on [my website](http://adrienchkirate.com/).
