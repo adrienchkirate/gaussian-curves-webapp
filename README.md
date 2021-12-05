@@ -1,19 +1,21 @@
 # A Web Application for scientific purposes 
 
-This application was built to improve work on Gaussian curves for a particular research subject at the [Limoges University](http://www.xlim.fr/) in France. However the application is flexible enough to work with gaussian curves for various purposes.The application is in French. 
-The online app includes a sample experimental curve if you want to test the app.
+This application was designed for a particular research subject at the [Limoges University](http://www.xlim.fr/) in France. The web application allows researchers to manipulate gaussian curves and experimental curves. The application is in French.
 
 It features :
-- Integration of your experimental curves
-- Addition of custom gaussian
-- Dynamic change
+- Integration of experimental points
+- Manipulation of gaussian curves
 - Exportation of the points as a csv file
-- Calculation of the error between experimental and theorical curve 
-- Calculation of a coefficient to reduce the error
+- Calculation of the error between an experimental and a theorical curve 
+- A curve fitting algorithm allowing the fitting of theoretical curves to an experimental curve
 
 ![Capture of the app](http://adrienchkirate.com/app/hf5v2/img/capture.png)
 
 **[Use the application. ](http://adrienchkirate.com/app/hf5v2/)**
+
+## Older version
+
+An older version with less feature is available **[here.](http://adrienchkirate.com/app/hf5v1/)**. 
 
 ## Init project
 
