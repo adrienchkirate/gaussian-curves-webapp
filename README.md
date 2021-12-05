@@ -15,7 +15,7 @@ It features :
 
 ## Older version
 
-An older version with less feature is available **[here.](http://adrienchkirate.com/app/hf5v1/)**. 
+An older version with less feature is available **[here](http://adrienchkirate.com/app/hf5v1/)**. 
 
 ## Init project
 
