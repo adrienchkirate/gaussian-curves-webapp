@@ -1,11 +1,11 @@
 # A Web Application for scientific purposes 
 
-This application was designed for a particular research subject at the [Limoges University](http://www.xlim.fr/) in France. The web application allows researchers to manipulate gaussian curves and experimental curves. The application is in French.
+This application was designed for a particular research subject at [Limoges University](http://www.xlim.fr/) in France. The web application allows researchers to manipulate gaussian curves and experimental curves. The application is in French.
 
 It features :
 - Integration of experimental points
 - Manipulation of gaussian curves
-- Exportation of the points as a csv file
+- Ability to export of the points as a csv file
 - Calculation of the error between an experimental and a theorical curve 
 - A curve fitting algorithm allowing the fitting of theoretical curves to an experimental curve
 
